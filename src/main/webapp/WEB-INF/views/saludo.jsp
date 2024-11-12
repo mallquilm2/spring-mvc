@@ -12,6 +12,7 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Bienvenido al MVC Spring</h1>
+        <h1>${mensaje}</h1> <br>
+        <h1>${nombre}</h1>
     </body>
 </html>
