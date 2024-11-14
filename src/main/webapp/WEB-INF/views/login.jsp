@@ -3,23 +3,42 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <title>Login Usuario</title>
     </head>
     <body>
-        <h1>Login Usuario</h1>
+
         <br/>
-        
-        <form action="loginAccion.do" method="post">
-            Usuario: <input type="text" name="txtUsuario"><br/>
-            Clave: <input type="password" name="txtClave"><br/> 
-            <input type="submit" value="Ingresar"/>
-        </form>
-        
-        <% 
-            if(request.getAttribute("msgError") != null){
-                out.println(request.getAttribute("msgError"));
-            }
-        %>
+
+        <div class="container">
+
+            <div class="row d-flex justify-content-center mx-auto">
+                <h1>Login Usuario</h1>
+                <div class="col-md-6 col-xs-12">
+                    <form action="loginAccion.do" method="post">
+                        <div class="form-group">
+                            Usuario: <input type="text" name="txtUsuario" class="form-control"><br/>
+                        </div>
+                        <div class="form-group">
+                            Clave: <input type="password" name="txtClave" class="form-control"><br/> 
+                        </div>
+
+                        <div class="form-group justify-content-center">
+                            <input type="submit" value="Ingresar" class="btn btn-primary button-submit"/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+             <% if (request.getAttribute("msgError") != null) { %>
+            <div class="alert alert-danger">
+                <strong>Error!</strong> <%= request.getAttribute("msgError") %>
+            </div>
+            <% } %>
+            
+        </div>
         
     </body>
 </html>
