@@ -5,10 +5,29 @@
 package edu.cibertec.capitulo2.dao;
 
 import edu.cibertec.capitulo2.model.UsuarioDTO;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class UsuarioDAO {
+    
+    private List<UsuarioDTO> listaUsuarios;
+    
+    public UsuarioDAO(){
+        listaUsuarios = new ArrayList<>();
+        listaUsuarios.add(new UsuarioDTO("jose", "12345", "José Perez"));
+        listaUsuarios.add(new UsuarioDTO("maria", "12345", "Maria Lupita"));
+        listaUsuarios.add(new UsuarioDTO("Pedro", "12345", "Pedro Tenorio"));
+    }
+    
+    public void insertarUsuario(UsuarioDTO usuario){
+        listaUsuarios.add(usuario);
+    }
+    
+    public List<UsuarioDTO> getListaUsuarios(){
+        return listaUsuarios;
+    }
     
     public UsuarioDTO validarLogin(UsuarioDTO usuario){
         if(usuario.getUsuario().equalsIgnoreCase("user") && usuario.getClave().equalsIgnoreCase("12345"))
