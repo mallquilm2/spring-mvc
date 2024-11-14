@@ -13,6 +13,7 @@
     </head>
     <body>
         <h1>${mensaje}</h1> <br>
-        <h1>${nombre}</h1>
+        <br/>
+        <a href="loginMostrar.do">Ingresar al Login</a>
     </body>
 </html>
