@@ -25,11 +25,8 @@ public class UsuarioController {
     }
     
     @RequestMapping("loginAccion")
-    public ModelAndView loginAccion(HttpServletRequest request){
+    public ModelAndView loginAccion(UsuarioDTO usuarioValida){
         ModelAndView mv = null;
-        UsuarioDTO usuarioValida = new UsuarioDTO();
-        usuarioValida.setUsuario(request.getParameter("txtUsuario"));
-        usuarioValida.setClave(request.getParameter("txtClave"));
         
         UsuarioDTO user = usuarioService.validarLogin(usuarioValida);
         if(user == null){

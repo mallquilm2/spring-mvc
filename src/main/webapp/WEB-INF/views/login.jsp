@@ -19,10 +19,10 @@
                 <div class="col-md-6 col-xs-12">
                     <form action="loginAccion.do" method="post">
                         <div class="form-group">
-                            Usuario: <input type="text" name="txtUsuario" class="form-control"><br/>
+                            Usuario: <input type="text" name="usuario" required placeholder="Usuario" class="form-control"><br/>
                         </div>
                         <div class="form-group">
-                            Clave: <input type="password" name="txtClave" class="form-control"><br/> 
+                            Clave: <input type="password" name="clave" required placeholder="Clave" class="form-control"><br/> 
                         </div>
 
                         <div class="form-group justify-content-center">
