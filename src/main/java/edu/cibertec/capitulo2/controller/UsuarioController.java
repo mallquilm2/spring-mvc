@@ -7,8 +7,11 @@ package edu.cibertec.capitulo2.controller;
 import edu.cibertec.capitulo2.model.UsuarioDTO;
 import edu.cibertec.capitulo2.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -18,6 +21,24 @@ public class UsuarioController {
     
     @Autowired
     private UsuarioService usuarioService;
+    
+    @RequestMapping("usuarioCrear")
+    public ModelAndView crearUsuario(){
+        return new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioDTO());
+    }
+    
+    @RequestMapping("usuarioGrabar")
+    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioDTO usuario, BindingResult result){
+        ModelAndView mv = null;
+        
+        if(result.hasErrors()){
+            mv = new ModelAndView("usuarioDatos","usuarioBean",usuario);
+        }else{
+            usuarioService.insertarUsuario(usuario);
+            mv = new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
+        }
+        return mv;
+    }
     
     @RequestMapping("loginMostrar")
     public String loginMostrar(){

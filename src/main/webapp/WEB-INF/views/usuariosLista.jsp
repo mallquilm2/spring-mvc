@@ -1,5 +1,5 @@
 <%@page import="edu.cibertec.capitulo2.model.UsuarioDTO" %>
-<%@page import="java.util.List" %> %>
+<%@page import="java.util.List" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -30,5 +30,6 @@
                 <% } %>
             </tbody>
         </table>
+            <a href="usuarioCrear.do">Crear usuario</a>
     </body>
 </html>
