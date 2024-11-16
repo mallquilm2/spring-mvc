@@ -18,6 +18,7 @@
                     <th>Usuario</th>
                     <th>Clave</th>
                     <th>Nombre Completo</th>
+                    <th>Foto</th>
                 </tr>
             </thead>
             <tbody>
@@ -26,6 +27,7 @@
                     <td> <%= usuario.getUsuario() %> </td>
                     <td> <%= usuario.getClave() %> </td>
                     <td> <%= usuario.getNombreCompleto() %> </td>
+                    <td><a href="fotoMostar.do?codigoUsuario=<% usuario.getUsuario(); %>">foto</a></td>
                 </tr>
                 <% } %>
             </tbody>

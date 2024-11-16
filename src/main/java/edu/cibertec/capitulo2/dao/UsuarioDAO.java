@@ -16,9 +16,20 @@ public class UsuarioDAO {
     
     public UsuarioDAO(){
         listaUsuarios = new ArrayList<>();
-        listaUsuarios.add(new UsuarioDTO("jose", "12345", "José Perez"));
-        listaUsuarios.add(new UsuarioDTO("maria", "12345", "Maria Lupita"));
-        listaUsuarios.add(new UsuarioDTO("Pedro", "12345", "Pedro Tenorio"));
+        listaUsuarios.add(new UsuarioDTO("jose", "12345", "José Perez",null));
+        listaUsuarios.add(new UsuarioDTO("maria", "12345", "Maria Lupita",null));
+        listaUsuarios.add(new UsuarioDTO("Pedro", "12345", "Pedro Tenorio",null));
+    }
+    
+    public UsuarioDTO getUsuario(String codigo){
+        UsuarioDTO rpta = null;
+        
+        for(UsuarioDTO usuario:listaUsuarios){
+            if(usuario.getUsuario().equalsIgnoreCase(codigo)){
+                rpta = usuario;
+            }
+        }
+        return rpta;
     }
     
     public void insertarUsuario(UsuarioDTO usuario){

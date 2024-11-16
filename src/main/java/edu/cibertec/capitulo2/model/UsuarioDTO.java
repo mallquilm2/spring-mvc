@@ -22,6 +22,9 @@ public class UsuarioDTO {
     @NotNull
     @NotBlank()
     private String clave;
+    
     private String nombreCompleto;
+    
+    private byte[] foto;
 
 }

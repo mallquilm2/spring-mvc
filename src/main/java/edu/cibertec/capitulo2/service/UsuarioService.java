@@ -24,6 +24,10 @@ public class UsuarioService {
         usuarioDao.insertarUsuario(usuario);
     }
     
+    public UsuarioDTO getUsuario(String codigo){
+        return usuarioDao.getUsuario(codigo);
+    }
+    
     public UsuarioDTO validarLogin(UsuarioDTO usuario){
         return usuarioDao.validarLogin(usuario);
     }
