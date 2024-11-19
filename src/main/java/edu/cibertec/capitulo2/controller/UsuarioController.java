@@ -74,7 +74,7 @@ public class UsuarioController {
         UsuarioDTO usuario = usuarioService.getUsuario(codigoUsuario);
         usuario.setFoto(archivo.getBytes());
         
-        return new ModelAndView("usuarioLista", "lista", usuarioService.getListaUsuarios());
+        return new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
     }
     
 }
