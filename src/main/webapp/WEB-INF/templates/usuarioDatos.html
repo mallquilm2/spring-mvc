@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Datos del usuario</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style type="text/css">
+            .formFieldError{
+                background-color: #FFC;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+            <div class="row d-flex justify-content-center mx-auto">
+                <h1>Datos del usuario</h1>
+                <div class="col-md-6 col-xs-12">
+                    <form th:object="${usuarioBean}" th:action="@{usuarioGrabar.do}">
+                        <table>
+                                <tr>
+                                    <td><label path="usuario">Usuario:</label></td>
+                                    <td><input id="usuario" th:field="*{usuario}"></input></td>
+                                    <td th:if="${#fieldshasError('usuario')}" th:errorClass="formFieldError" th:errors="*{usuario}"></td>
+                                </tr>
+                                <tr>
+                                    <td><label path="clave">Clave:</label></td>
+                                    <td><input path="clave"></input></td>
+                                    <td><errors path="clave"></errors></td>
+                                </tr>
+                                <tr>
+                                    <td><label path="nombreCompleto">Nombre Completo</label></td>
+                                    <td><input path="nombreCompleto"></input></td>
+                                    <td><errors path="nombreCompleto"></errors></td>
+                                </tr>
+                                <tr>
+                                    <td colspan="1">
+                                        <input type="submit" value="Insertar" class="btn btn-primary button-submit"/>
+                                    </td>
+                                </tr>
+                            </table>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+
+        <br/>
+
+    </body>
+</html>
