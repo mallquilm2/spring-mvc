@@ -40,5 +40,8 @@
         </div>
         
             <a href="usuarioCrear.do" class="btn btn-primary btn-lg active">Crear usuario</a>
+            <span>Se tienen 
+                <%=session.getAttribute("contador") %> de usuario(s)
+            </span>
     </body>
 </html>

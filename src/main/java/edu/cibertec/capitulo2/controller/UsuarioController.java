@@ -11,15 +11,18 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
+@SessionAttributes("contador")
 public class UsuarioController {
     
     @Autowired
@@ -31,7 +34,7 @@ public class UsuarioController {
     }
     
     @RequestMapping("usuarioGrabar")
-    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioDTO usuario, BindingResult result){
+    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioDTO usuario, BindingResult result, ModelMap modelo){
         ModelAndView mv = null;
         
         if(result.hasErrors()){
@@ -39,6 +42,9 @@ public class UsuarioController {
         }else{
             usuarioService.insertarUsuario(usuario);
             mv = new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
+            int contador = (int) modelo.get("contador");
+            contador++;
+            mv.addObject("contador",contador);
         }
         return mv;
     }
@@ -55,9 +61,11 @@ public class UsuarioController {
         UsuarioDTO user = usuarioService.validarLogin(usuarioValida);
         if(user == null){
             mv = new ModelAndView("login", "msgError", "Usuario y/o clave incorrecto.");
+            
         }else{
            //mv = new ModelAndView("saludo", "mensaje", "Bienvenido "+user.getNombreCompleto());
            mv = new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
+           mv.addObject("contador",usuarioService.getListaUsuarios().size());
         }
         return mv;
     }
