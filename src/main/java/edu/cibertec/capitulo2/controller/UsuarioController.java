@@ -6,6 +6,7 @@ package edu.cibertec.capitulo2.controller;
 
 import edu.cibertec.capitulo2.model.UsuarioDTO;
 import edu.cibertec.capitulo2.service.UsuarioService;
+import java.util.Base64;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +73,13 @@ public class UsuarioController {
     
     @RequestMapping("fotoMostar")
     public String fotoMostarr(HttpServletRequest request, Model modelo){
-        modelo.addAttribute("usuario", usuarioService.getUsuario(request.getParameter("codigoUsuario")));
+        UsuarioDTO usuario = usuarioService.getUsuario(request.getParameter("codigoUsuario"));
+        modelo.addAttribute("usuario", usuario);
+        String foto ="";
+        if(usuario.getFoto()!=null && usuario.getFoto().length > 0){
+            foto = Base64.getEncoder().encodeToString(usuario.getFoto());
+            modelo.addAttribute("foto64", foto);
+        }
         return "fotoUsuario";
     }
     

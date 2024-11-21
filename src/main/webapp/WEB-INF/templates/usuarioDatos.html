@@ -18,22 +18,22 @@
             <div class="row d-flex justify-content-center mx-auto">
                 <h1>Datos del usuario</h1>
                 <div class="col-md-6 col-xs-12">
-                    <form th:object="${usuarioBean}" th:action="@{usuarioGrabar.do}">
+                    <form th:object="${usuarioBean}" th:action="@{usuarioGrabar.do}" method="post">
                         <table>
                                 <tr>
-                                    <td><label path="usuario">Usuario:</label></td>
+                                    <td><label for="usuario">Usuario:</label></td>
                                     <td><input id="usuario" th:field="*{usuario}"></input></td>
-                                    <td th:if="${#fieldshasError('usuario')}" th:errorClass="formFieldError" th:errors="*{usuario}"></td>
+                                    <td th:if="${#fields.hasErrors('usuario')}" th:errorclass="formFieldError" th:errors="*{usuario}"></td>
                                 </tr>
                                 <tr>
-                                    <td><label path="clave">Clave:</label></td>
-                                    <td><input path="clave"></input></td>
-                                    <td><errors path="clave"></errors></td>
+                                    <td><label for="clave">Clave:</label></td>
+                                    <td><input id="clave" th:field="*{clave}"></input></td>
+                                    <td th:if="${#fields.hasErrors('clave')}" th:errorclass="formFieldError" th:errors="*{clave}"></td>
                                 </tr>
                                 <tr>
-                                    <td><label path="nombreCompleto">Nombre Completo</label></td>
-                                    <td><input path="nombreCompleto"></input></td>
-                                    <td><errors path="nombreCompleto"></errors></td>
+                                    <td><label for="nombreCompleto">Nombre Completo:</label></td>
+                                    <td><input id="nombreCompleto" th:field="*{nombreCompleto}"></input></td>
+                                    <td th:if="${#fields.hasErrors('nombreCompleto')}" th:errorclass="formFieldError" th:errors="*{nombreCompleto}"></td>
                                 </tr>
                                 <tr>
                                     <td colspan="1">
@@ -44,11 +44,7 @@
                     </form>
                 </div>
             </div>
-
         </div>
-
-
         <br/>
-
     </body>
 </html>
