@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.cibertec.capitulo2.controller;
+package edu.cibertec.capitulo3.controller;
 
-import edu.cibertec.capitulo2.model.UsuarioDTO;
-import edu.cibertec.capitulo2.service.UsuarioService;
+import edu.cibertec.capitulo3.model.UsuarioDTO;
+import edu.cibertec.capitulo3.service.UsuarioService;
 import java.util.Base64;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;

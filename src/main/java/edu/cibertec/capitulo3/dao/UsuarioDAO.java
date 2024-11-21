@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package edu.cibertec.capitulo2.dao;
+package edu.cibertec.capitulo3.dao;
 
-import edu.cibertec.capitulo2.model.UsuarioDTO;
+import edu.cibertec.capitulo3.model.UsuarioDTO;
 import java.util.ArrayList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
