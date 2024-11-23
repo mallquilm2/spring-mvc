@@ -19,6 +19,8 @@
                     <th>Clave</th>
                     <th>Nombre Completo</th>
                     <th>Foto</th>
+                    <th>Modificar</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,6 +29,8 @@
                     <td th:text="${user.clave}"></td>
                     <td th:text="${user.nombreCompleto}"></td>
                     <td><a th:href="@{'fotoMostar.do?codigoUsuario='+${user.usuario}}">foto</a></td>
+                    <td><a th:href="@{'usuarioMod.do?codigoUsuario='+${user.usuario}}'}">Modificar</a></td>
+                    <td><a th:href="@{'usuarioEli.do?codigoUsuario='+${user.usuario}}'}">Eliminar</a></td>
                 </tr>
             </tbody>
         </table>

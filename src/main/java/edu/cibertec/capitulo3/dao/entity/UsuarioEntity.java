@@ -4,6 +4,7 @@
  */
 package edu.cibertec.capitulo3.dao.entity;
 
+import java.util.Base64;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -35,7 +36,18 @@ public class UsuarioEntity {
     @Column(name = "nomCompleto")
     private String nombreCompleto;
     
-    @Transient
+    @Column
     private byte[] foto;
+    
+    @Transient
+    private String fotoBase64;
+    
+    public String obtenerFotoBase(){
+        String rpta= null;
+        if(foto != null && foto.length >0)
+            rpta = Base64.getEncoder().encodeToString(foto);
+        
+        return rpta;
+    }
 
 }

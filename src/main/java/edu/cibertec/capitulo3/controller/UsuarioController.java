@@ -31,7 +31,9 @@ public class UsuarioController {
     
     @RequestMapping("usuarioCrear")
     public ModelAndView crearUsuario(){
-        return new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioEntity());
+        ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioEntity());
+        mv.addObject("accion", "Insertar")
+        return mv;
     }
     
     @RequestMapping("usuarioGrabar")
@@ -91,5 +93,20 @@ public class UsuarioController {
         
         return new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
     }
+    
+    @RequestMapping("usuarioMod")
+    public ModelAndView usuarioModificar(@RequestParam("codigoUsuario" String codigo)){
+        ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", usuarioService.getUsuario(codigo));
+        mv.addObject("accion","Modificar");
+        return mv;
+    }
+    
+    /*
+    @RequestMapping("usuarioEli")
+    public ModelAndView usuarioEliminar(@RequestParam("codigoUsuario" String codigo)){
+        ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", usuarioService.eliminarUsuario());
+        return mv;
+    }
+*/
     
 }

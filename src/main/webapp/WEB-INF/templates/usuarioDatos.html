@@ -36,6 +36,11 @@
                                     <td th:if="${#fields.hasErrors('nombreCompleto')}" th:errorclass="formFieldError" th:errors="*{nombreCompleto}"></td>
                                 </tr>
                                 <tr>
+                                    <td><label for="archivo">Subir foto:</label></td>
+                                    <td><input type ="file" id="archivo" name="archivo"/></td>
+                                    <input type="submit" th:value="${accion}" />
+                                </tr>
+                                <tr>
                                     <td colspan="1">
                                         <input type="submit" value="Insertar" class="btn btn-primary button-submit"/>
                                     </td>
