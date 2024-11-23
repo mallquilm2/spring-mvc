@@ -4,27 +4,27 @@
  */
 package edu.cibertec.capitulo3.dao;
 
-import edu.cibertec.capitulo3.model.UsuarioDTO;
+import edu.cibertec.capitulo3.dao.entity.UsuarioEntity;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-@Repository
-public class UsuarioDAO {
-    
-    private List<UsuarioDTO> listaUsuarios;
+public interface UsuarioDAO extends JpaRepository<UsuarioEntity, String>{
+    /*
+    private List<UsuarioEntity> listaUsuarios;
     
     public UsuarioDAO(){
         listaUsuarios = new ArrayList<>();
-        listaUsuarios.add(new UsuarioDTO("jose", "12345", "José Perez",null));
-        listaUsuarios.add(new UsuarioDTO("maria", "12345", "Maria Lupita",null));
-        listaUsuarios.add(new UsuarioDTO("Pedro", "12345", "Pedro Tenorio",null));
+        listaUsuarios.add(new UsuarioEntity("jose", "12345", "José Perez",null));
+        listaUsuarios.add(new UsuarioEntity("maria", "12345", "Maria Lupita",null));
+        listaUsuarios.add(new UsuarioEntity("Pedro", "12345", "Pedro Tenorio",null));
     }
     
-    public UsuarioDTO getUsuario(String codigo){
-        UsuarioDTO rpta = null;
+    public UsuarioEntity getUsuario(String codigo){
+        UsuarioEntity rpta = null;
         
-        for(UsuarioDTO usuario:listaUsuarios){
+        for(UsuarioEntity usuario:listaUsuarios){
             if(usuario.getUsuario().equalsIgnoreCase(codigo)){
                 rpta = usuario;
             }
@@ -32,20 +32,21 @@ public class UsuarioDAO {
         return rpta;
     }
     
-    public void insertarUsuario(UsuarioDTO usuario){
+    public void insertarUsuario(UsuarioEntity usuario){
         listaUsuarios.add(usuario);
     }
     
-    public List<UsuarioDTO> getListaUsuarios(){
+    public List<UsuarioEntity> getListaUsuarios(){
         return listaUsuarios;
     }
     
-    public UsuarioDTO validarLogin(UsuarioDTO usuario){
+    public UsuarioEntity validarLogin(UsuarioEntity usuario){
         if(usuario.getUsuario().equalsIgnoreCase("user") && usuario.getClave().equalsIgnoreCase("12345"))
             usuario.setNombreCompleto("Luis Mallqui");
         else
             usuario = null;
         return usuario;
     }
+*/
     
 }

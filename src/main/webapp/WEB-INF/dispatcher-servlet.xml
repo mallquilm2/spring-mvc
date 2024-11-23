@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:p="http://www.springframework.org/schema/p"
 xmlns:context="http://www.springframework.org/schema/context"
 xmlns:mvc="http://www.springframework.org/schema/mvc"
 xmlns:jpa="http://www.springframework.org/schema/data/jpa"
@@ -40,16 +41,20 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
         <property name="username" value="root"/>
         <property name="password" value="root"/>
     </bean>
-     
-    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="generateDdl" value="false"/>
-        <property name="showSql" value="true"/>
-        <property name="databasePlatform" value="org.hibernate.dialect.MYSQL5Dialect"/>
-    </bean>
     
-    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
-        
+    <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean"
+        p:packagesToScan="edu.cibertec.capitulo3.dao.entity" p:dataSource-ref="dataSource">
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+                <property name="generateDdl" value="false"/>
+                <property name="showSql" value="true"/>
+                <property name="databasePlatform" value="org.hibernate.dialect.MySQL5Dialect"/>
+            </bean>
+        </property>
     </bean>
+   
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager" p:entityManagerFactory-ref="entityManagerFactory"/>
+       
     
 </beans>
 

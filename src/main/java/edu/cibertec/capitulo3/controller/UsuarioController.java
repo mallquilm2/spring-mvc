@@ -4,7 +4,7 @@
  */
 package edu.cibertec.capitulo3.controller;
 
-import edu.cibertec.capitulo3.model.UsuarioDTO;
+import edu.cibertec.capitulo3.dao.entity.UsuarioEntity;
 import edu.cibertec.capitulo3.service.UsuarioService;
 import java.util.Base64;
 import javax.servlet.http.HttpServletRequest;
@@ -31,11 +31,11 @@ public class UsuarioController {
     
     @RequestMapping("usuarioCrear")
     public ModelAndView crearUsuario(){
-        return new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioDTO());
+        return new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioEntity());
     }
     
     @RequestMapping("usuarioGrabar")
-    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioDTO usuario, BindingResult result, ModelMap modelo){
+    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioEntity usuario, BindingResult result, ModelMap modelo){
         ModelAndView mv = null;
         
         if(result.hasErrors()){
@@ -56,10 +56,10 @@ public class UsuarioController {
     }
     
     @RequestMapping("loginAccion")
-    public ModelAndView loginAccion(UsuarioDTO usuarioValida){
+    public ModelAndView loginAccion(UsuarioEntity usuarioValida){
         ModelAndView mv = null;
         
-        UsuarioDTO user = usuarioService.validarLogin(usuarioValida);
+        UsuarioEntity user = usuarioService.validarLogin(usuarioValida);
         if(user == null){
             mv = new ModelAndView("login", "msgError", "Usuario y/o clave incorrecto.");
             
@@ -73,7 +73,7 @@ public class UsuarioController {
     
     @RequestMapping("fotoMostar")
     public String fotoMostarr(HttpServletRequest request, Model modelo){
-        UsuarioDTO usuario = usuarioService.getUsuario(request.getParameter("codigoUsuario"));
+        UsuarioEntity usuario = usuarioService.getUsuario(request.getParameter("codigoUsuario"));
         modelo.addAttribute("usuario", usuario);
         String foto ="";
         if(usuario.getFoto()!=null && usuario.getFoto().length > 0){
@@ -86,7 +86,7 @@ public class UsuarioController {
     @RequestMapping("fotoGrabar")
     public ModelAndView fotoGrabar(@RequestParam("archivo") CommonsMultipartFile archivo, @RequestParam("codigoUsuario") String codigoUsuario){
         
-        UsuarioDTO usuario = usuarioService.getUsuario(codigoUsuario);
+        UsuarioEntity usuario = usuarioService.getUsuario(codigoUsuario);
         usuario.setFoto(archivo.getBytes());
         
         return new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
