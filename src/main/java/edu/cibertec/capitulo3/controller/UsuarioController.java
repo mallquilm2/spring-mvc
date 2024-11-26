@@ -34,12 +34,14 @@ public class UsuarioController {
     }
     
     @RequestMapping("usuarioGrabar")
-    public ModelAndView grabarUsuario(@Valid @ModelAttribute("usuarioBean") UsuarioEntity usuario, BindingResult result, ModelMap modelo){
+    public ModelAndView grabarUsuario(@RequestParam("archivo") CommonsMultipartFile archivo,
+            @Valid @ModelAttribute("usuarioBean") UsuarioEntity usuario, BindingResult result, ModelMap modelo){
         ModelAndView mv = null;
         
         if(result.hasErrors()){
             mv = new ModelAndView("usuarioDatos","usuarioBean",usuario);
         }else{
+            usuario.setFoto(archivo.getBytes());
             usuarioService.insertarUsuario(usuario);
             mv = new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
             int contador = (int) modelo.get("contador");
