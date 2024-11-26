@@ -65,9 +65,8 @@ public class UsuarioController {
             mv = new ModelAndView("login", "msgError", "Usuario y/o clave incorrecto.");
             
         }else{
-           //mv = new ModelAndView("saludo", "mensaje", "Bienvenido "+user.getNombreCompleto());
-           mv = new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
-           mv.addObject("contador",usuarioService.getListaUsuarios().size());
+           mv = new ModelAndView("menu", "usuario", user);
+           //mv.addObject("contador",usuarioService.getListaUsuarios().size());
         }
         return mv;
     }
