@@ -41,4 +41,8 @@ public class UsuarioService {
         
     }
     
+    public void eliminarUsuario(String codigo){
+        usuarioDao.deleteById(codigo);
+    }
+    
 }

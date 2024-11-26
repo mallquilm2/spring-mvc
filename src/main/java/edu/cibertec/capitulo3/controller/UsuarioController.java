@@ -1,7 +1,4 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package edu.cibertec.capitulo3.controller;
 
 import edu.cibertec.capitulo3.dao.entity.UsuarioEntity;
@@ -32,7 +29,7 @@ public class UsuarioController {
     @RequestMapping("usuarioCrear")
     public ModelAndView crearUsuario(){
         ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", new UsuarioEntity());
-        mv.addObject("accion", "Insertar")
+        mv.addObject("accion", "Insertar");
         return mv;
     }
     
@@ -95,18 +92,24 @@ public class UsuarioController {
     }
     
     @RequestMapping("usuarioMod")
-    public ModelAndView usuarioModificar(@RequestParam("codigoUsuario" String codigo)){
+    public ModelAndView usuarioModificar(@RequestParam("codigoUsuario") String codigo){
         ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", usuarioService.getUsuario(codigo));
         mv.addObject("accion","Modificar");
         return mv;
     }
     
-    /*
+    
     @RequestMapping("usuarioEli")
-    public ModelAndView usuarioEliminar(@RequestParam("codigoUsuario" String codigo)){
-        ModelAndView mv = new ModelAndView("usuarioDatos", "usuarioBean", usuarioService.eliminarUsuario());
-        return mv;
+    public ModelAndView usuarioEliminar(@RequestParam("codigoUsuario") String codigo){
+        usuarioService.eliminarUsuario(codigo);
+        return new ModelAndView("redirect:usuarioListar.do");
     }
-*/
+    
+    @RequestMapping("usuarioListar")
+    public ModelAndView usuarioListar(){
+        return new ModelAndView("usuariosLista", "lista", usuarioService.getListaUsuarios());
+    }
+    
+
     
 }
