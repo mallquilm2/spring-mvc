@@ -3,7 +3,7 @@ package edu.cibertec.capitulo3.service;
 
 import edu.cibertec.capitulo3.dao.CursoDAO;
 import edu.cibertec.capitulo3.dao.entity.CursoEntity;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;

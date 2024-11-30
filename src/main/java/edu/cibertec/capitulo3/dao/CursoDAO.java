@@ -2,7 +2,7 @@
 package edu.cibertec.capitulo3.dao;
 
 import edu.cibertec.capitulo3.dao.entity.CursoEntity;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -26,7 +26,7 @@ public interface CursoDAO extends JpaRepository<CursoEntity, Integer>{
     
     //Consulta de cursos despues de la fecha X
     //Manejo de fecha
-    @Query("SELECT c FROM CursoEntity c.fechaInicio >= :fecha")
+    @Query("SELECT c FROM CursoEntity c WHERE c.fechaInicio >= :fecha")
     public List<CursoEntity> consultarPorFecha(@Param("fecha") Date fecha);
     
     //Consulta de curso por su nombre

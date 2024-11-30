@@ -2,8 +2,7 @@
 package edu.cibertec.capitulo3.controller;
 
 import edu.cibertec.capitulo3.service.CursoService;
-import java.text.DateFormat;
-import java.util.Date;
+import java.sql.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,10 +38,8 @@ public class CursoController {
                 mv.addObject("lista", cursoService.consultarFaltantes(faltante));
                 break;
             case "porFecha":
-                Date d = new Date(request.getParameter("fecha"));
-                String fecha = d.toString();
-                //DateFormat df = new DateFormat("dd-mm-yyy");
-                mv.addObject("lista", cursoService.consultarPorFecha(d));
+                Date fecha = Date.valueOf(request.getParameter("fecha"));
+                mv.addObject("lista", cursoService.consultarPorFecha(fecha));
                 break;
             case "nombre":
                 String nombre = request.getParameter("nombreCurso");

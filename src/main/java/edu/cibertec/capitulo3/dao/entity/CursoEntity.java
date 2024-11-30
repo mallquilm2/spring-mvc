@@ -1,7 +1,7 @@
 
 package edu.cibertec.capitulo3.dao.entity;
 
-import java.util.Date;
+import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
