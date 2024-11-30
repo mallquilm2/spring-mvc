@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Matricula</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <h1>Matricula</h1>
+        <div class="table-responsive">
+            <table class="table table-responsive table-sm table-dark table-striped table-bordered table-hover">
+                <thead>
+                    <tr class="info">
+                        <th>Codigo</th>
+                        <th>Fecha</th>
+                        <th>Usuario</th>
+                        <th>Curso</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:ech="matricula : ${listaMat}">
+                        <td th:text="${matricula.idMatricula}"></td>
+                        <td th:text="${#dates.format(matricula.fechaMat,'dd/MM/yyyy')}"></td>
+                        <td th:text="${matricula.usuario.nombreCompleto}"></td>
+                        <td th:text="${matricula.curso.nomCurso}"></td>
+                        <td th:text="${matricula.estado}"></td>
+                    </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
