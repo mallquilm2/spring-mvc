@@ -29,7 +29,7 @@ public class MatriculaController {
     public ModelAndView matriculaMostrar(){
         ModelAndView mv = new ModelAndView("matricula","listaMat",matriculaService.listarMatriculas());
         mv.addObject("listaUsu", usuarioService.getListaUsuarios());
-        mv.addObject("listaCur", cursoService.consultaPorEstado(0));
+        mv.addObject("listaCur", cursoService.abiertoIncompleto());
         return mv;
     }
     
